@@ -12,11 +12,11 @@ class Module
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\Class\MapAutoloader' => array(
+            'Zend\Loader\ClassMapAutoloader' => array(
                 __DIR__ . '/autoload_classmap.php',
             ),
-            'Zend\Loader\StandartAutoloader' => array(
-                'namespace' => array(
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
@@ -32,13 +32,13 @@ class Module
     {
         return array(
             'factories' => array(
-                'AdminModuleAdminTable' => function($sm){
-                    $tableGateway = $sm->get('ZendDbAdapterAdapter');
+                'Admin\Model\AdminTable' => function($sm){
+                    $tableGateway = $sm->get('Admin\TableGateway');
                     $table = new AdminTable($tableGateway);
                     return $table;
                 },
-                'AdminTableGateway' => function($sm){
-                    $dbAdapter = $sm->get('ZendDbAdapterAdapter');
+                'Admin\TableGateway' => function($sm){
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Admin());
                     return new TableGateway('admin', $dbAdapter, null, $resultSetPrototype);
