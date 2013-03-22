@@ -18,7 +18,7 @@ class AdminTable
         return $resultSet;
     }
     
-    public function getCategory ($id)
+    public function getCategory($id)
     {
         $id = (int)$id;
         $rowset = $this->tableGateway->select(array('id' => $id));
@@ -32,7 +32,7 @@ class AdminTable
     public function saveCategory(Admin $admin)
     {
         $data = array(
-            'admin' => $admin->admin,
+            'artist' => $admin->admin,
             'title' => $admin->title,
         );
         
