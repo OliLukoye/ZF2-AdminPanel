@@ -61,7 +61,7 @@ class AdminController extends AbstractActionController
         $form->bind($admin);
         $form->get('submit')->setAttribute('value', 'Edit');
         
-         $request = $this->getRequest();
+        $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setInputFilter($admin->getInputFilter());
             $form->setData($request->getPost());

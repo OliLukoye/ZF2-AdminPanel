@@ -21,6 +21,11 @@ class Admin implements InputFilterAwareInterface
         $this->title = (isset($data['title'])) ? $data['title'] : NULL;
     }
     
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
     public function setInputFilter(InputFilterInterface $inputFilter) 
     {
         throw new Exception("Not used");
