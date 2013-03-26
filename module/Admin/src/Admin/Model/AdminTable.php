@@ -32,7 +32,7 @@ class AdminTable
     public function saveCategory(Admin $admin)
     {
         $data = array(
-            'artist' => $admin->admin,
+            'artist' => $admin->artist,
             'title' => $admin->title,
         );
         

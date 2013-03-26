@@ -80,4 +80,29 @@ class AdminController extends AbstractActionController
         );
     }
     
+    public function deleteAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('admin');
+        }
+ 
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'No');
+ 
+            if ($del == 'Yes') {
+                $id = (int) $request->getPost('id');
+                $this->getAlbumTable()->deleteCategory($id);
+            }
+ 
+            // Redirect to list of albums
+            return $this->redirect()->toRoute('admin');
+        }
+ 
+        return array(
+            'id'    => $id,
+            'album' => $this->getAlbumTable()->getCategory($id)
+        );
+    }
 }
