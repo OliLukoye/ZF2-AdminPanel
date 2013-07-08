@@ -4,7 +4,7 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Admin\Controller\Admin' => 'Admin\Controller\AdminController',
+            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
             'Admin\Controller\Post' => 'Admin\Controller\PostController',
         ),
     ),
@@ -16,7 +16,7 @@ return array(
                     'route' => '/admin',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Admin\Controller',
-                        'controller'    => 'Admin',
+                        'controller'    => 'Index',
                         'action'        => 'index',
                     ),
                 ),
@@ -30,7 +30,7 @@ return array(
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
-                                'controller' => 'Admin\Controller\Admin',
+                                'controller' => 'Admin\Controller\Index',
                                 'action' => 'index',
                             ),
                         ),

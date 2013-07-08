@@ -6,7 +6,7 @@ use Zend\View\Model\ViewModel;
 use Admin\Model\Admin;
 use Admin\Form\AdminForm;
 
-class AdminController extends AbstractActionController
+class IndexController extends AbstractActionController
 {
     protected $albumTable;
     
