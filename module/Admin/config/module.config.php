@@ -20,18 +20,22 @@ return array(
                         'action'        => 'index',
                     ),
                 ),
+                'may_terminate' => true,
                 'child_routes' => array(
                     'default' => array(
-                        'type' => 'segment',
+                        'type' => 'Segment',
                         'options' => array(
-                            'route' => '[/:controller[/:action][/:id]]',
+                            'route' => '/[:controller[/:action][/:id]]',
+                            //'route' => '[/:action][/:addon]]',
                             'constrains' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'         => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
                                 'controller' => 'Admin\Controller\Index',
-                                'action' => 'index',
+                                'action'     => 'index',
+                                'id'         => '',
                             ),
                         ),
                     ),
