@@ -8,29 +8,29 @@ use Zend\InputFilter\InputFilterInterface;
 
 class Post implements InputFilterAwareInterface
 {
-    private $_id;
-    private $_meta_d;
-    private $_meta_k;
-    private $_title_post;
-    private $_text_post;
-    private $_author_post;
-    private $_date_post;
-    private $_fid_cat;
-    private $_comment_count;
+    public $id;
+    public $meta_d;
+    public $meta_k;
+    public $title_post;
+    public $text_post;
+    public $author_post;
+    public $date_post;
+    public $fid_cat;
+    public $comment_count;
     protected $inputFilter;
 
 
     public function exchangeArray($data)
     {
-        $this->_id = (isset($data['id'])) ? $data['id'] : NULL;
-        $this->_meta_d = (isset($data['meta_d'])) ? $data['meta_d'] : NULL;
-        $this->_meta_k = (isset($data['meta_k'])) ? $data['meta_k'] : NULL;
-        $this->_title_post = (isset($data['title_post'])) ? $data['title_post'] : NULL;
-        $this->_text_post = (isset($data['text_post'])) ? $data['text_post'] : NULL;
-        $this->_author_post = (isset($data['author_post'])) ? $data['author_post'] : NULL;
-        $this->_date_post = (isset($data['date_post'])) ? $data['date_post'] : NULL;
-        $this->_fid_cat = (isset($data['fid_cat'])) ? $data['fid_cat'] : NULL;
-        $this->_comment_count = (isset($data['comment_count'])) ? $data['comment_count'] : NULL;
+        $this->id = (isset($data['id'])) ? $data['id'] : NULL;
+        $this->meta_d = (isset($data['meta_d'])) ? $data['meta_d'] : NULL;
+        $this->meta_k = (isset($data['meta_k'])) ? $data['meta_k'] : NULL;
+        $this->title_post = (isset($data['title_post'])) ? $data['title_post'] : NULL;
+        $this->text_post = (isset($data['text_post'])) ? $data['text_post'] : NULL;
+        $this->author_post = (isset($data['author_post'])) ? $data['author_post'] : NULL;
+        $this->date_post = (isset($data['date_post'])) ? $data['date_post'] : NULL;
+        $this->fid_cat = (isset($data['fid_cat'])) ? $data['fid_cat'] : NULL;
+        $this->comment_count = (isset($data['comment_count'])) ? $data['comment_count'] : NULL;
     }
     
     public function getArrayCopy()
@@ -58,8 +58,8 @@ class Post implements InputFilterAwareInterface
             )));
  
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'artist',
-                'required' => true,
+                'name'     => 'meta_d',
+                'required' => FALSE,
                 'filters'  => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
@@ -67,17 +67,36 @@ class Post implements InputFilterAwareInterface
                 'validators' => array(
                     array(
                         'name'    => 'StringLength',
-                        'options' => array(
-                            'encoding' => 'UTF-8',
-                            'min'      => 1,
-                            'max'      => 100,
-                        ),
+//                        'options' => array(
+//                            'encoding' => 'UTF-8',
+//                            'min'      => 1,
+//                            'max'      => 255,
+//                        ),
+                    ),
+                ),
+            )));
+            
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'meta_k',
+                'required' => FALSE,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+//                        'options' => array(
+//                            'encoding' => 'UTF-8',
+//                            'min'      => 1,
+//                            'max'      => 255,
+//                        ),
                     ),
                 ),
             )));
  
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'title',
+                'name'     => 'title_post',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),
@@ -87,9 +106,9 @@ class Post implements InputFilterAwareInterface
                     array(
                         'name'    => 'StringLength',
                         'options' => array(
-                            'encoding' => 'UTF-8',
+//                            'encoding' => 'UTF-8',
                             'min'      => 1,
-                            'max'      => 100,
+//                            'max'      => 255,
                         ),
                     ),
                 ),
