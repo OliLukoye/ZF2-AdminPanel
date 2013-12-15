@@ -1,5 +1,5 @@
 <?php
-namespace Posts\Model;
+namespace Admin\Model;
 
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
@@ -113,6 +113,38 @@ class Post implements InputFilterAwareInterface
                     ),
                 ),
             )));
+            
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'author_post',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
+            )));
+            
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'date_post',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
+            )));
+            
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'fid_cat',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
+            )));
+            
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'comment_count',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
+            )));
  
             $this->inputFilter = $inputFilter;
         }
@@ -120,4 +152,3 @@ class Post implements InputFilterAwareInterface
         return $this->inputFilter;
     }
 }
-?>
