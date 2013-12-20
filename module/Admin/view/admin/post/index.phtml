@@ -3,3 +3,18 @@ $title = "Post options";
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<table class="table">
+<tr>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Text</th>
+</tr>
+<?php foreach ($posts as $post) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($post->title_post);?></td>
+    <td><?php echo $this->escapeHtml($post->date_post);?></td>
+    <td><?php echo $this->escapeHtml($post->test_post);?></td>
+</tr>
+<?php endforeach; ?>
+</table>

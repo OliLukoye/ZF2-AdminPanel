@@ -4,6 +4,8 @@ namespace Admin;
 
 use Admin\Model\Admin;
 use Admin\Model\AdminTable;
+use Admin\Model\Post;
+use Admin\Model\PostTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -42,6 +44,17 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Admin());
                     return new TableGateway('admin', $dbAdapter, null, $resultSetPrototype);
+                },
+                'AdminModelPostsTable' => function($sm){
+                    $tableGateway = $sm->get('PostsTableGateway');
+                    $table = new Model\PostTable($tableGateway);
+                    return $table;
+                },
+                'PostsTableGateway' => function($sm){
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Admin());
+                    return new TableGateway('posts', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

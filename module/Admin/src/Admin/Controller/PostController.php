@@ -3,6 +3,7 @@ namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Admin\Model\Post;
 
 class PostController extends AbstractActionController
 {
@@ -11,7 +12,16 @@ class PostController extends AbstractActionController
     public function indexAction() 
     {
         return new ViewModel(array(
-            'admin' => 'admin',
+            'posts' => $this->getPostsTable()->fetchAll(),
         ));
+    }
+    
+    public function getPostsTable()
+    {
+        if (!$this->postsTable) {
+            $sm = $this->getServiceLocator();
+            $this->postsTable = $sm->get("AdminModelPostsTable");
+        }
+        return $this->postsTable;
     }
 }
