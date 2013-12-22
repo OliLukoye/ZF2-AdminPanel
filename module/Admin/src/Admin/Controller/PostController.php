@@ -3,7 +3,7 @@ namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Admin\Model\Post;
+use Admin\Model\Posts;
 
 class PostController extends AbstractActionController
 {

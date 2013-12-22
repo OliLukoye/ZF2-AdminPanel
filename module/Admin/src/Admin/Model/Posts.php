@@ -6,7 +6,7 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
-class Post implements InputFilterAwareInterface
+class Posts implements InputFilterAwareInterface
 {
     public $id;
     public $meta_d;
